@@ -93,3 +93,14 @@ Os critérios de avaliação serão:
 -   Qualidade da implementação do Docker.
 -   Usabilidade da interface frontend.
 -   Documentação clara e detalhada.
+
+Cnpj para uso
+---------
+
+
+- 08.241.739/0001-05
+- 00.000.000/4687-62
+- 33.000.167/1049-00
+- 08.334.385/0001-35
+- 08.324.196/0001-81
+- 05.415.006/0001-43
