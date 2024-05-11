@@ -32,7 +32,7 @@ def get_certificate(request: Request):
         page.pdf(path=(pdf_location / f'{hash_pdf}.pdf'))
 
     return {
-        'path': request.url_for('func2', hash=hash_pdf),
+        'path': request.url_for('func2', hash=hash_pdf)._url,
         'expiration_date': datetime.now(),
         'number_certificate': randint(10000, 99999),
     }
