@@ -1,0 +1,13 @@
+services:
+  backend:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - pdf-data:/app/backend/pdf/ 
+    ports:
+      - 8000:8000
+
+volumes:
+  pdf-data:
