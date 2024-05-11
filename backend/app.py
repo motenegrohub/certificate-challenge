@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 
 app = FastAPI()
 pdf_location = Path(
-    './pdf',
+    './backend/pdf',
 )
 
 
