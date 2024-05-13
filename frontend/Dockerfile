@@ -16,7 +16,6 @@ ENV NODE_ENV=production
 RUN npm ci
 
 
-
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
