@@ -10,4 +10,4 @@ RUN playwright install chromium
 
 RUN playwright install-deps chromium  
 
-CMD ["fastapi", "run", "./app.py", "--port", "8000"]
+CMD ["fastapi", "run", "./app.py"]
