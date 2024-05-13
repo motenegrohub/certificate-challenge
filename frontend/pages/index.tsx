@@ -46,7 +46,7 @@ export default function Home() {
       <div>
         {response ? (
           <ul>
-            <li>path: {response.path}</li>
+            <li>path: <a href={response.path}>Link para o pdf</a></li>
             <li>Expiration date: {response.expirationDate.toString()}</li>
             <li>Number certificate: {response.numberCertificate}</li>
           </ul>
