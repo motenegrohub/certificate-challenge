@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react"
+import Head from 'next/head'
 
 import InputCnpj from "@/components/InputCnpj"
 import { Response } from "@/types/response"
@@ -27,23 +28,31 @@ export default function Home() {
 
   return (
     <>
+    <div>
+      <Head>
+        <title>Certificate challenge</title>
+        <meta property="og:title" content="Certificate challenge" key="title" />
+      </Head>
+    </div>
       <div>
-        <form onSubmit={onSubmit}>
+        <form 
+          className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+          onSubmit={onSubmit}
+        >
           <InputCnpj />
-          <h1> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA </h1>
         </form>
       </div>
 
-      {/* <div>
+      <div>
         {response ? (
-          <div>
-            <h1>{response.path}</h1>
-            <h1>{response.expirationDate.toString()}</h1>
-            <h1>{response.numberCertificate}</h1>
-          </div>
+          <ul>
+            <li>path: {response.path}</li>
+            <li>Expiration date: {response.expirationDate.toString()}</li>
+            <li>Number certificate: {response.numberCertificate}</li>
+          </ul>
         ) : ''}
 
-      </div> */}
+      </div>
     </>
   )
 }

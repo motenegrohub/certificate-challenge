@@ -7,14 +7,28 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from playwright.sync_api import sync_playwright
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 pdf_location = Path(
     './backend/pdf',
 )
 
 
-@app.get('/certificate')
+@app.get('/api/certificate')
 def save_certificate_file(request: Request):
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -40,7 +54,7 @@ def save_certificate_file(request: Request):
     }
 
 
-@app.get('/certificate/file/{hash_code}')
+@app.get('/api/certificate/file/{hash_code}')
 def get_certificate_file(hash_code: str, download: bool = False):
     print(hash_code)
     pdf_file_location = pdf_location / f'{hash_code}.pdf'
