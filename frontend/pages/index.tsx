@@ -16,7 +16,7 @@ export default function Home() {
     if (!cnpj) {
       return
     }
-    const response = await fetch(`http://localhost:8000/api/certificate/?cnpj={cnpj}`)
+    const response = await fetch(`http://localhost:8000/certificate/?cnpj={cnpj}`)
     const data = await response.json()
 
     setResponse({
