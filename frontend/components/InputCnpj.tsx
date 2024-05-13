@@ -22,6 +22,7 @@ export default function InputCnpj() {
           onChange={(e) => setCnpj(e.target.value)}
           type='string'
           mask='99.999.999/9999-99'
+          required
         />
       </div>
 

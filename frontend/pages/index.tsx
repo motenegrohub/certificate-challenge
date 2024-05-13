@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import InputCnpj from "@/components/InputCnpj"
 import { Response } from "@/types/response"
+import { validaCnpj } from "@/utils/validaCnpj"
 
 
 export default function Home() {
@@ -10,15 +11,21 @@ export default function Home() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
-
     const formData = new FormData(event.currentTarget)
-    const cnpj = formData.get('cnpj')
+    const cnpj = formData.get('cnpj') as string
+
     if (!cnpj) {
       return
     }
+    
+    if (!validaCnpj(cnpj)) {
+      alert('Digite um CNPJ válido')
+      return
+    }
+
     const response = await fetch(`http://localhost:8000/certificate/?cnpj={cnpj}`)
     const data = await response.json()
-
+    
     setResponse({
       path: data.path,
       expirationDate: new Date(data.expiration_date),
@@ -43,9 +50,9 @@ export default function Home() {
         </form>
       </div>
 
-      <div>
+      <div className='bg-white shqdow-md rounded px-8 pt-6 pb-8'>
         {response ? (
-          <ul>
+          <ul className='list-disc text-black'>
             <li>path: <a href={response.path}>Link para o pdf</a></li>
             <li>Expiration date: {response.expirationDate.toString()}</li>
             <li>Number certificate: {response.numberCertificate}</li>
