@@ -53,7 +53,8 @@ export default function Home() {
       <div className='bg-white shqdow-md rounded px-8 pt-6 pb-8'>
         {response ? (
           <ul className='list-disc text-black'>
-            <li>path: <a href={response.path}>Link para o pdf</a></li>
+            <li><a href={response.path} target='_blank'>Ver</a></li>
+            <li><a href={`${response.path}?download=True`} target='_blank'>Baixar</a></li>
             <li>Expiration date: {response.expirationDate.toString()}</li>
             <li>Number certificate: {response.numberCertificate}</li>
           </ul>
