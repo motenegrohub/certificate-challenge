@@ -27,3 +27,9 @@ $ cd certificate-challenge
 ```bash
 $ docker-compose up
 ```
+
+4. Acesse o localhost na porta 3000
+
+```bash
+$ http://localhost:3000/
+```
