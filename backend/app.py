@@ -58,10 +58,7 @@ def save_certificate_file(request: Request):
 
 @app.get('/certificate/file/{hash_code}/')
 def get_certificate_file(hash_code: str, download: bool = False):
-    print(hash_code)
     pdf_file_location = pdf_location / f'{hash_code}.pdf'
-
-    print(download)
 
     if download:
         return FileResponse(
