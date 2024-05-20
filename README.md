@@ -1,106 +1,35 @@
-Desafio de Extração de Certidão
-===============================
+# Certificate Challenge
 
-Descrição
----------
+## Requisitos para rodar o projeto:
 
-Este desafio consiste em criar uma aplicação full-stack que extrai certidões fazendárias de um portal público, utilizando Python para o backend e Next.js para o frontend. A aplicação deve seguir o padrão RESTful e JSON:API.
+- Git
 
-Objetivos
----------
+- Docker
 
-1.  Backend
+- Docker-compose
 
-    -   Criar uma API usando FastAPI para gerenciar a extração e visualização de certidões.
-    -   Utilizar Playwright para automação e web scraping dos dados.
-    -   Containerizar a aplicação backend usando Docker.
-2.  Frontend
+## Siga esses passos pra rodar o projeto:
 
-    -   Criar uma interface web simples usando Next.js para interagir com a API.
-    -   Utilizar Tailwind CSS ou Material UI para estilização.
-    -   Containerizar a aplicação frontend usando Docker.
+1. Clone o projeto
 
-Especificações do Backend
--------------------------
+```bash
+$ git clone https://github.com/jhonatacaiob/certificate-challenge.git
+```
 
-1.  Rota `GET /certificate`:
+2. Entre no repositório
 
-    -   Acessar o portal [Directa](https://directa.natal.rn.gov.br/).
-    -   Navegar para `Certidões > Emitir Certidão Fazendária`.
-    -   Selecionar o tipo CNPJ e inserir o CNPJ `24590572000136`.
-    -   Analisar os retornos e interceptar as requisições.
-    -   Repetir a tentativa caso o retorno seja inválido.
-    -   Se o retorno for válido, capturar o PDF e salvar o arquivo com um hash.
-    -   Ler o PDF e retornar os seguintes dados:
-        -   `path`: Caminho do PDF salvo para ser baixado ou visualizado.
-        -   `expiration_date`: Data de vencimento do PDF em UTF, baseada na data atual.
-        -   `number_certificate`: Número da certidão.
-2.  Rota `GET /certificate/file/{hash}`:
+```bash
+$ cd certificate-challenge
+```
 
-    -   `hash`: Hash do arquivo salvo.
-    -   Retornar o arquivo PDF salvo.
-    -   Se o parâmetro `download` for `true`, o documento deve ser baixado.
-    -   Caso contrário, retornar o buffer do PDF para visualização na página.
-3.  Docker:
+3. Use o docker-compose para executar o projeto
 
-    -   Criar uma imagem Docker para a aplicação backend.
+```bash
+$ docker-compose up
+```
 
-Especificações do Frontend
---------------------------
+4. Acesse o localhost na porta 3000
 
-1.  Página de Consulta:
-
-    -   Criar uma página simples com um input para inserir o CNPJ.
-    -   Consultar a API do backend utilizando as informações fornecidas.
-    -   Exibir os dados retornados pela API.
-2.  Estilização:
-
-    -   Utilizar Tailwind CSS ou Material UI para a estilização (à escolha do desenvolvedor).
-3.  Docker:
-
-    -   Criar uma imagem Docker para a aplicação frontend.
-
-Requisitos Técnicos
--------------------
-
-1.  Backend:
-
-    -   Python
-    -   FastAPI
-    -   Playwright
-    -   Docker
-2.  Frontend:
-
-    -   Next.js
-    -   Tailwind CSS ou Material UI
-    -   Docker
-
-Entrega
--------
-
--   Faça o fork deste repositório.
--   Implemente as funcionalidades descritas.
--   Crie um README com instruções claras de como rodar a aplicação.
--   Faça um pull request com a sua solução.
-
-Avaliação
----------
-
-Os critérios de avaliação serão:
-
--   Organização e clareza do código.
--   Funcionamento correto das funcionalidades especificadas.
--   Qualidade da implementação do Docker.
--   Usabilidade da interface frontend.
--   Documentação clara e detalhada.
-
-Cnpj para uso
----------
-
-
-- 08.241.739/0001-05
-- 00.000.000/4687-62
-- 33.000.167/1049-00
-- 08.334.385/0001-35
-- 08.324.196/0001-81
-- 05.415.006/0001-43
+```bash
+$ http://localhost:3000/
+```
